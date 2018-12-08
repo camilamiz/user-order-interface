@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { redirect_to @user }
+        format.html { redirect_to @order.user, notice: 'Campo sem preenchimento.' }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end

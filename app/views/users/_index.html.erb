@@ -1,0 +1,4 @@
+<h1>Lista de usuários cadastrados</h1>
+<% @users.each do |user|%>
+  <p>Id. <%= user.id %> | Nome: <%= user.name %> | CPF: <%= user.cpf %> | E-mail: <%= user.email %> <%= link_to '+ Assinatura', user_path(user) %></p>
+<% end %>
