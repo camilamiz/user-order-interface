@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'users/new'
+  get 'users/create'
+  get 'users/index'
+  get 'users/show'
   get 'orders/new'
   get 'orders/create'
   root to: 'pages#home'
