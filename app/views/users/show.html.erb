@@ -1,2 +1,12 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1># <%= @user.id %> | <%= @user.name %></h1>
+<p><%= @user.email %></p>
+<%= link_to 'Back to list', users_path %>
+
+<div class="col-sm-12 col-md-6">
+  <% @user.orders.each do |order| %>
+    <p><%= order.id %> | <%= order.model %> | <%= order.imei %> | R$ <%= order.annual_price %> | <%= order.number_of_installments %></p>
+  <% end %>
+</div>
+<div class="col-sm-12 col-md-6">
+  <%= render 'orders/new' %>
+</div>

@@ -1,21 +1,29 @@
 class OrdersController < ApplicationController
-  def new
-    @user = User.find(params[:user_id])
-    @order = Order.new
-  end
+  # def new
+  #   @user = User.find(params[:user_id])
+  #   @order = Order.new
+  # end
 
   def create
     @order = Order.new(order_params)
-  # we need `restaurant_id` to asssociate review with corresponding restaurant
     @order.user = User.find(params[:user_id])
     if @order.save
-      redirect_to order_path(@user)
+      respond_to do |format|
+        format.html { redirect_to @order.user, notice: 'Order was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @user }
+      end
     else
-      render :new
+      respond_to do |format|
+        format.html { redirect_to @user }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   private
+
+  def set_user
+  end
 
   def order_params
     params.require(:order).permit(:model, :imei, :annual_price, :number_of_installments)

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :users, only: [ :new, :create, :index, :show ]
+  resources :users, only: [ :new, :create, :index, :show ] do
+    resources :orders, only: [ :create ]
+  end
 
-  get 'orders/new'
-  get 'orders/create'
   root to: 'pages#home'
 
   namespace :api, defaults: { format: :json } do

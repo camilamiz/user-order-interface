@@ -1,0 +1,7 @@
+<%= simple_form_for [@user, @order] do |f| %>
+  <%= f.input :model %>
+  <%= f.input :imei %>
+  <%= f.input :annual_price %>
+  <%= f.input :number_of_installments %>
+  <%= f.button :submit %>
+<% end %>
