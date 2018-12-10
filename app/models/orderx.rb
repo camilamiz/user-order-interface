@@ -1,5 +1,5 @@
 class Orderx < ApplicationRecord
-  belongs_to :user
+  belongs_to :userx
 
   validates :model, presence: true
   validates :imei, presence: true

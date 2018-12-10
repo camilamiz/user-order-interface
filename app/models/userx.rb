@@ -1,5 +1,5 @@
 class Userx < ApplicationRecord
-  has_many :orderxs
+  has_many :orderxes
 
   validates :cpf, uniqueness: true, presence: true
 end
