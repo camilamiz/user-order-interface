@@ -177,3 +177,24 @@ SimpleForm.setup do |config|
   # config.input_field_valid_class = 'is-valid'
   # config.input_field_error_class = 'is-invalid'
 end
+module SimpleForm
+  module Components
+    module Errors
+      def has_errors?
+        has_custom_error? || (object && object.respond_to?(:errors) && errors.present?)
+      end
+
+      def errors
+        @errors ||= has_custom_error? ? [options[:error]] : (errors_on_attribute + errors_on_association).compact
+      end
+    end
+  end
+end
+
+module SimpleForm
+  class ErrorNotification
+    def has_errors?
+      @options[:errors] || (object && object.respond_to?(:errors) && errors.present?)
+    end
+  end
+end
