@@ -2,8 +2,9 @@
 
 
 <%= simple_form_for @user do |f| %>
+  <%= f.error_notification errors: true %>
   <%= f.input :name %>
-  <%= f.input :cpf %>
+  <%= f.input :cpf, error: "CPF já possui cadastro" %>
   <%= f.input :email %>
   <%= f.button :submit %>
 <% end %>
